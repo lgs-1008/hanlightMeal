@@ -79,5 +79,6 @@ if __name__ == "__main__":
     Dayotw = [1,2,3,4,5] #월 화 수 목 금. 날짜를 받아올때는 1씩 더해서 사용, 식단은 그대로 사용.
     for D in week:
         for i in Dayotw:
-            if int(datetime.datetime.now().strftime('%m'))==int((get_day(D,i+1)%10000)/100):
-                MealModel(month = int((get_day(D,i+1)%10000)/100), date = get_day(D,i+1)%100, detail = get_meal(D,i)).save()
+            getday = get_day(D,i+1)
+            if int(datetime.datetime.now().strftime('%m'))==int((getday%10000)/100):
+                MealModel(month = int((getday%10000)/100), date = getday%100, detail = get_meal(D,i)).save()
